@@ -6,9 +6,30 @@ defmodule Brave.PromoTest do
   describe "codes" do
     alias Brave.Promo.Code
 
-    @valid_attrs %{code: "some code"}
-    @update_attrs %{code: "some updated code"}
-    @invalid_attrs %{code: nil}
+    @valid_attrs %{
+      code: "some code",
+      amount: 1234,
+      expiry_date: ~D[2000-01-01],
+      is_active: true,
+      event_location: [1.23456789, 9.87654321],
+      radius: 5
+    }
+    @update_attrs %{
+      code: "some updated code",
+      amount: 4321,
+      expiry_date: ~D[1970-01-01],
+      is_active: false,
+      event_location: [9.87654321, 1.23456789],
+      radius: 10
+    }
+    @invalid_attrs %{
+      code: nil,
+      amount: nil,
+      expiry_date: nil,
+      is_active: nil,
+      event_location: nil,
+      radius: nil
+    }
 
     def code_fixture(attrs \\ %{}) do
       {:ok, code} =
