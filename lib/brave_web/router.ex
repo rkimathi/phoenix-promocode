@@ -7,5 +7,6 @@ defmodule BraveWeb.Router do
 
   scope "/api", BraveWeb do
     pipe_through :api
+    resources "/codes", CodeController, except: [:new, :edit]
   end
 end
