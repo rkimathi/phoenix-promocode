@@ -12,7 +12,7 @@ defmodule Brave.PromoTest do
       expiry_date: ~D[2000-01-01],
       is_active: true,
       event_location: [1.23456789, 9.87654321],
-      radius: 5
+      radius: 12
     }
     @update_attrs %{
       code: "some updated code",
@@ -20,7 +20,7 @@ defmodule Brave.PromoTest do
       expiry_date: ~D[1970-01-01],
       is_active: false,
       event_location: [9.87654321, 1.23456789],
-      radius: 10
+      radius: 21
     }
     @invalid_attrs %{
       code: nil,
@@ -53,6 +53,11 @@ defmodule Brave.PromoTest do
     test "create_code/1 with valid data creates a code" do
       assert {:ok, %Code{} = code} = Promo.create_code(@valid_attrs)
       assert code.code == "some code"
+      assert code.amount == 1234
+      assert code.expiry_date == ~D[2000-01-01]
+      assert code.is_active == true
+      assert code.event_location == [1.23456789, 9.87654321]
+      assert code.radius == 12
     end
 
     test "create_code/1 with invalid data returns error changeset" do
@@ -63,6 +68,11 @@ defmodule Brave.PromoTest do
       code = code_fixture()
       assert {:ok, %Code{} = code} = Promo.update_code(code, @update_attrs)
       assert code.code == "some updated code"
+      assert code.amount == 4321
+      assert code.expiry_date == ~D[1970-01-01]
+      assert code.is_active == false
+      assert code.event_location == [9.87654321, 1.23456789]
+      assert code.radius == 21
     end
 
     test "update_code/2 with invalid data returns error changeset" do
