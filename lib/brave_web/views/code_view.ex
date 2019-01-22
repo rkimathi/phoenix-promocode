@@ -17,6 +17,8 @@ defmodule BraveWeb.CodeView do
       expiry_date: code.expiry_date,
       is_active: code.is_active,
       event_location: code.event_location,
-      radius: code.radius}
+      radius: code.radius,
+      inserted_at: code.inserted_at,
+      updated_at: code.updated_at}
   end
 end
