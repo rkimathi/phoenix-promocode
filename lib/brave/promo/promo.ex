@@ -22,6 +22,19 @@ defmodule Brave.Promo do
   end
 
   @doc """
+  Returns the list of active codes.
+
+  ## Examples
+
+      iex> list_active_codes()
+      [%Code{}, ...]
+
+  """
+  def list_active_codes do
+    Repo.all(Code |> where(is_active: true))
+  end
+
+  @doc """
   Gets a single code.
 
   Raises `Ecto.NoResultsError` if the Code does not exist.
@@ -36,6 +49,22 @@ defmodule Brave.Promo do
 
   """
   def get_code!(id), do: Repo.get!(Code, id)
+
+  @doc """
+  Gets a single code by the given code.
+
+  Raises `Ecto.NoResultsError` if the Code does not exist.
+
+  ## Examples
+
+      iex> get_code_by_code!(123)
+      %Code{}
+
+      iex> get_code_by_code!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_code_by_code!(code), do: Repo.get_by!(Code, code: code)
 
   @doc """
   Creates a code.
