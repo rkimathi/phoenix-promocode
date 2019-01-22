@@ -1,19 +1,19 @@
-# Brave
+# Brave Promo Code API
 
-To start your Phoenix server:
+Intro: Brave want to give out promo codes worth x amount during events so people can get free rides to and from the event. The flaw with that is people can use the promo codes without going for the event. ​
+Task​: Implement a promo code API with the following features.
 
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.setup`
   * Start Phoenix endpoint with `mix phx.server`
+  * Generation of new promo codes for events
+  * The promo code is worth a specific amount of ride
+  * The promo code can expire
+  * Can be deactivated
+  * Return active promo codes
+  * Return all promo codes
+  * Only valid when user’s pickup or destination is within x radius of the event venue
+  * The promo code radius should be configurable
+  * To test the validity of the promo code, expose an endpoint that accept origin, destination, the promo code. The API should return the promo code details and a polyline using the destination and origin if promo code is valid and an error otherwise. 
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+Please submit code as if you intended to ship it to production. The details matter. Tests are expected, as is well written, simple idiomatic code. 
